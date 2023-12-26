@@ -1,3 +1,54 @@
+<h1 align="center">Project API</h1>
+
+# Table of Contents 
+- [Introduction](#introduction)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Project API Documentation](#project-api-documentation)
+
+# Introduction
+
+API Project - Adhivasindo Technical Test
+
+# Requirements
+
+- PHP ^7.3|^8.0
+- laravel/framework 8.75
+- laravel/sanctum ^2.11
+- guzzlehttp/guzzle ^7.0.1
+- MySQL or other Relational Databases
+
+# Installation
+
+- Clone this repo using any method (https, ssh, gh cli)
+
+- Set the configuration file using the command 
+``` cp .env.example .env ```
+
+- Install all required packages via composer. ``` composer install ```
+  
+- Generate Key. ``` php artisan key:generate ```
+
+- Set up Database configuration inside .env file.
+
+- Run the migration and seeder
+```
+php artisan migrate --seed
+```
+
+- Start the local server using the command
+```
+php artisan serve
+```
+
+## Current Admin Credentials
+
+You may use these credentials to auth logi. you can change these credentials shortly after logging in.
+
+**Email** : admin@test.com<br>
+**Password** : password
+
+
 # Project API Documentation
 
 ## Login
