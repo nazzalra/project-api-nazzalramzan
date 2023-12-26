@@ -8,6 +8,9 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
@@ -43,5 +46,28 @@ class UserController extends Controller
         $user->update($validated);
 
         return new UserResource($user);
+    }
+
+    public function updatePassword(User $user, Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => ['required','confirmed', Password::defaults()]
+        ]);
+
+        if(!Hash::check($request->current_password, $user->password)){
+            throw ValidationException::withMessages([
+                'error' => 'The provided credentials are not correct'
+            ]);
+        }
+
+        $user->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Password updated successfully'
+        ], Response::HTTP_OK);
     }
 }

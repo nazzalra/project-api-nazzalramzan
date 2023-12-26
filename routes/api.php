@@ -18,5 +18,6 @@ use App\Http\Controllers\Api;
 Route::post('/auth/login',[Api\AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function(){
+    Route::put('/users/{user}/update-password', [Api\UserController::class, 'updatePassword']);
     Route::apiResource('users',Api\UserController::class);
 });
