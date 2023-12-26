@@ -427,3 +427,147 @@
 }
 ```
 
+
+## Students (Realtime External API) - Search By Name
+
+**URL** : `/api/students/search?nama=Turner Mia`
+
+**Method** : `GET`
+
+**Headers** : `Accept: application/json`, `Content-Type: application/json`
+
+**Auth** : `Bearer Token`
+
+### Success Response
+
+**Code** : `200 Ok`
+
+**Params** : `nama`
+
+**Content example**
+
+```json
+{
+    "status": "success",
+    "data": [
+        {
+            "NAMA": "Turner Mia",
+            "YMD": "20220713",
+            "NIM": "9352078461"
+        }
+    ]
+}
+```
+
+### Error Response
+
+**Condition** : If 'Bearer Token' is invalid.
+
+**Code** : `401 Unauthorized`
+
+**Content** :
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+## Students (Realtime External API) - Search By NIM
+
+**URL** : `/api/students/search?nim=9352078461`
+
+**Method** : `GET`
+
+**Headers** : `Accept: application/json`, `Content-Type: application/json`
+
+**Auth** : `Bearer Token`
+
+### Success Response
+
+**Code** : `200 Ok`
+
+**Params** : `nim`
+
+**Content example**
+
+```json
+{
+    "status": "success",
+    "data": [
+        {
+            "NIM": "9352078461",
+            "YMD": "20220713",
+            "NAMA": "Turner Mia"
+        }
+    ]
+}
+```
+
+### Error Response
+
+**Condition** : If 'Bearer Token' is invalid.
+
+**Code** : `401 Unauthorized`
+
+**Content** :
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+## Students (Realtime External API) - Search By YMD
+
+**URL** : `/api/students/search?ymd=20230405`
+
+**Method** : `GET`
+
+**Headers** : `Accept: application/json`, `Content-Type: application/json`
+
+**Auth** : `Bearer Token`
+
+### Success Response
+
+**Code** : `200 Ok`
+
+**Params** : `ymd`
+
+**Content example**
+
+```json
+{
+    "status": "success",
+    "data": [
+        {
+            "NIM": "1206485739",
+            "NAMA": "Aiden Hayes",
+            "YMD": "20230405"
+        },
+        {
+            "NIM": "5036487912",
+            "NAMA": "Hill Elijah",
+            "YMD": "20230405"
+        },
+        {
+            "NIM": "8761043925",
+            "NAMA": "Sophia Martinez",
+            "YMD": "20230405"
+        }
+    ]
+}
+```
+
+### Error Response
+
+**Condition** : If 'Bearer Token' is invalid.
+
+**Code** : `401 Unauthorized`
+
+**Content** :
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
