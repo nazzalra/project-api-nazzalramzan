@@ -32,4 +32,16 @@ class UserController extends Controller
     {
         return new UserResource($user);
     }
+
+    public function update(User $user,Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'string|max:255',
+            'email' => 'string|email|unique:users,email,'.$user->id
+        ]);
+
+        $user->update($validated);
+
+        return new UserResource($user);
+    }
 }
