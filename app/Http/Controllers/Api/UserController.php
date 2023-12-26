@@ -70,4 +70,10 @@ class UserController extends Controller
             'message' => 'Password updated successfully'
         ], Response::HTTP_OK);
     }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return response()->noContent();
+    }
 }
